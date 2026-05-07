@@ -52,13 +52,7 @@
 <body onload="window.print()">
     <div class="qr-card">
         <div class="qr-image">
-            @php
-                $qrText = "KODE: " . $aset->kode_aset . "\n" .
-                         "NAMA: " . $aset->nama_aset . "\n" .
-                         "TAHUN: " . $aset->tahun_perolehan . "\n" .
-                         "NILAI: Rp " . number_format($aset->nilai, 0, ',', '.');
-            @endphp
-            {!! QrCode::size(200)->generate($qrText) !!}
+            {!! QrCode::size(200)->generate(route('public.aset.show', $aset->kode_aset)) !!}
         </div>
         <div class="asset-name">{{ $aset->nama_aset }}</div>
         <div class="asset-code">{{ $aset->kode_aset }}</div>

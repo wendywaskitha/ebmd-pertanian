@@ -10,6 +10,7 @@ use App\Models\KibC;
 use App\Models\KibD;
 use App\Models\KibE;
 use App\Models\KibF;
+use App\Models\AsetLampiran;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -48,6 +49,9 @@ class AsetController extends Controller
             'nilai' => 'required|numeric',
             'kondisi' => 'required|in:Baik,Kurang Baik,Rusak Ringan,Rusak Berat,Hilang',
             'foto' => 'nullable|image|max:2048',
+            'pengguna_aset' => 'nullable|string|max:255',
+            'lampirans.*' => 'nullable|file|max:10240',
+            'lampiran_keterangans.*' => 'nullable|string|max:255',
         ]);
 
         DB::beginTransaction();
@@ -58,6 +62,21 @@ class AsetController extends Controller
             }
 
             $aset = Aset::create($data);
+
+            // Store Lampirans
+            if ($request->hasFile('lampirans')) {
+                foreach ($request->file('lampirans') as $index => $file) {
+                    if ($file) {
+                        $keterangan = $request->lampiran_keterangans[$index] ?? null;
+                        $path = $file->store('lampirans', 'public');
+                        $aset->lampirans()->create([
+                            'nama_file' => $file->getClientOriginalName(),
+                            'path' => $path,
+                            'keterangan' => $keterangan,
+                        ]);
+                    }
+                }
+            }
 
             // Store KIB Details
             $this->storeKibDetails($aset, $request);
@@ -103,6 +122,9 @@ class AsetController extends Controller
             'nilai' => 'required|numeric',
             'kondisi' => 'required|in:Baik,Kurang Baik,Rusak Ringan,Rusak Berat,Hilang',
             'foto' => 'nullable|image|max:2048',
+            'pengguna_aset' => 'nullable|string|max:255',
+            'lampirans.*' => 'nullable|file|max:10240',
+            'lampiran_keterangans.*' => 'nullable|string|max:255',
         ]);
 
         DB::beginTransaction();
@@ -117,6 +139,21 @@ class AsetController extends Controller
             }
 
             $aset->update($data);
+
+            // Store Lampirans
+            if ($request->hasFile('lampirans')) {
+                foreach ($request->file('lampirans') as $index => $file) {
+                    if ($file) {
+                        $keterangan = $request->lampiran_keterangans[$index] ?? null;
+                        $path = $file->store('lampirans', 'public');
+                        $aset->lampirans()->create([
+                            'nama_file' => $file->getClientOriginalName(),
+                            'path' => $path,
+                            'keterangan' => $keterangan,
+                        ]);
+                    }
+                }
+            }
 
             // If KIB type changed, delete old KIB data
             if ($oldKibType !== $newKibType) {
@@ -192,5 +229,17 @@ class AsetController extends Controller
             case 'E': $aset->kibE()->delete(); break;
             case 'F': $aset->kibF()->delete(); break;
         }
+    }
+
+    /**
+     * Remove the specified attachment.
+     */
+    public function destroyLampiran(AsetLampiran $lampiran)
+    {
+        if ($lampiran->path) {
+            \Illuminate\Support\Facades\Storage::disk('public')->delete($lampiran->path);
+        }
+        $lampiran->delete();
+        return back()->with('success', 'Lampiran berhasil dihapus');
     }
 }

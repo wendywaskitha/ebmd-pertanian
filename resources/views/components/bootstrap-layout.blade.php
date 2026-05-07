@@ -180,6 +180,11 @@
                     <i class="bi bi-gear"></i> Pengaturan
                 </a>
             </li>
+            <li>
+                <a href="{{ route('backup.index') }}" class="{{ request()->routeIs('backup.*') ? 'active' : '' }}">
+                    <i class="bi bi-database"></i> Backup & Restore
+                </a>
+            </li>
         </ul>
     </nav>
 
@@ -216,14 +221,14 @@
         <div class="main-content">
             @if(session('success'))
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    {{ session('success') }}
+                    {!! session('success') !!}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             @endif
 
             @if(session('error'))
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    {{ session('error') }}
+                    {!! session('error') !!}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             @endif
@@ -236,6 +241,7 @@
 <!-- Scripts -->
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.3/dist/cdn.min.js"></script>
 
 <script>
     $(document).ready(function () {

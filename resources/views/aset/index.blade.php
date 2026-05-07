@@ -16,6 +16,7 @@
                             <th>Nama Aset</th>
                             <th>KIB</th>
                             <th>Lokasi</th>
+                            <th>Pengguna</th>
                             <th>Kondisi</th>
                             <th class="text-end">Aksi</th>
                         </tr>
@@ -27,6 +28,7 @@
                                 <td>{{ $aset->nama_aset }}</td>
                                 <td><span class="badge bg-secondary">KIB {{ $aset->kib_type }}</span></td>
                                 <td>{{ $aset->lokasi->nama_lokasi ?? '-' }}</td>
+                                <td class="small">{{ $aset->pengguna_aset ?? '-' }}</td>
                                 <td>
                                     <span class="badge bg-{{ $aset->kondisi == 'Baik' ? 'success' : ($aset->kondisi == 'Kurang Baik' ? 'warning text-dark' : 'danger') }}">
                                         {{ $aset->kondisi }}
@@ -52,7 +54,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="6" class="text-center py-4 text-muted italic">Data aset tidak ditemukan.</td>
+                                <td colspan="7" class="text-center py-4 text-muted italic">Data aset tidak ditemukan.</td>
                             </tr>
                         @endforelse
                     </tbody>

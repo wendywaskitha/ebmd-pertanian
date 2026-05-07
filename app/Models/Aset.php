@@ -18,6 +18,7 @@ class Aset extends Model
         'latitude',
         'longitude',
         'foto',
+        'pengguna_aset',
     ];
 
     public function lokasi()
@@ -31,6 +32,11 @@ class Aset extends Model
     public function kibD() { return $this->hasOne(KibD::class, 'aset_id'); }
     public function kibE() { return $this->hasOne(KibE::class, 'aset_id'); }
     public function kibF() { return $this->hasOne(KibF::class, 'aset_id'); }
+
+    public function lampirans()
+    {
+        return $this->hasMany(AsetLampiran::class);
+    }
 
     public function stockOpnames()
     {

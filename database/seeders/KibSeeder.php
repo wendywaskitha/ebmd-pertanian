@@ -30,6 +30,7 @@ class KibSeeder extends Seeder
         }
 
         $kondisiOptions = ['Baik', 'Kurang Baik', 'Rusak Berat'];
+        $penggunaOptions = ['Budi Utomo', 'Siti Rahma', 'Agus Salim', 'Dewi Sartika', 'Ahmad Dahlan', 'H.R. Rasuna Said'];
 
         // 2. Seed each KIB type (A to F)
         foreach (['A', 'B', 'C', 'D', 'E', 'F'] as $type) {
@@ -42,6 +43,7 @@ class KibSeeder extends Seeder
                     'tahun_perolehan' => rand(2015, 2024),
                     'nilai' => rand(1000000, 500000000),
                     'kondisi' => $kondisiOptions[array_rand($kondisiOptions)],
+                    'pengguna_aset' => $penggunaOptions[array_rand($penggunaOptions)],
                 ]);
 
                 $this->createKibDetail($aset, $type);

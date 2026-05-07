@@ -8,7 +8,19 @@
 
     <div class="card shadow mb-4">
         <div class="card-body p-4">
-            <form action="{{ route('aset.store') }}" method="POST" enctype="multipart/form-data" x-data="{ kib_type: '{{ request('kib_type', old('kib_type', 'A')) }}' }">
+            <form action="{{ route('aset.store') }}" method="POST" enctype="multipart/form-data" x-data="{ 
+                kib_type: '{{ request('kib_type', old('kib_type', 'A')) }}',
+                lampirans: [{ id: Date.now(), keterangan: '' }],
+                getSuggestions() {
+                    if (this.kib_type === 'A') return ['Sertifikat Tanah', 'Peta Bidang', 'AJB'];
+                    if (this.kib_type === 'B') return ['STNK', 'BPKB', 'Faktur', 'Kuitansi'];
+                    if (this.kib_type === 'C') return ['IMB/PBG', 'As Built Drawing'];
+                    if (this.kib_type === 'D') return ['Dokumen Kontrak', 'BAST'];
+                    if (this.kib_type === 'E') return ['Sertifikat', 'Faktur'];
+                    if (this.kib_type === 'F') return ['Kontrak Kerja', 'Dokumentasi'];
+                    return [];
+                }
+            }">
                 @csrf
                 
                 <div class="row g-4 mb-4">
@@ -60,6 +72,12 @@
                                     <option value="{{ $lokasi->id }}" {{ old('lokasi_id') == $lokasi->id ? 'selected' : '' }}>{{ $lokasi->nama_lokasi }}</option>
                                 @endforeach
                             </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold">Pengguna Aset (Penanggung Jawab)</label>
+                            <input type="text" name="pengguna_aset" class="form-control form-control-sm @error('pengguna_aset') is-invalid @enderror" value="{{ old('pengguna_aset') }}" placeholder="Nama penanggung jawab aset...">
+                            @error('pengguna_aset') <div class="invalid-feedback">{{ $message }}</div> @enderror
                         </div>
                     </div>
 
@@ -219,6 +237,42 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+
+                <!-- Lampiran Dokumen -->
+                <div class="card mt-4 mb-4 border-start border-5 border-primary shadow-sm">
+                    <div class="card-header bg-light py-2 d-flex justify-content-between align-items-center">
+                        <h6 class="fw-bold text-dark mb-0 small">
+                            <i class="bi bi-paperclip me-2"></i>Lampiran Dokumen (Opsional)
+                        </h6>
+                        <button type="button" class="btn btn-sm btn-outline-primary py-0 px-2" @click="lampirans.push({ id: Date.now(), keterangan: '' })">
+                            <i class="bi bi-plus-lg"></i> Tambah Baris
+                        </button>
+                    </div>
+                    <div class="card-body py-3">
+                        <div class="text-muted small mb-3">
+                            <span class="me-2">Saran:</span>
+                            <template x-for="sug in getSuggestions()" :key="sug">
+                                <span class="badge bg-white text-dark border me-1 py-1 px-2" @click="if (lampirans.length > 0) lampirans[lampirans.length-1].keterangan = sug" style="cursor:pointer;" x-text="sug"></span>
+                            </template>
+                        </div>
+
+                        <template x-for="(row, index) in lampirans" :key="row.id">
+                            <div class="row g-2 mb-2 align-items-center">
+                                <div class="col-md-5">
+                                    <input type="file" :name="'lampirans[' + index + ']'" class="form-control form-control-sm">
+                                </div>
+                                <div class="col-md-5">
+                                    <input type="text" :name="'lampiran_keterangans[' + index + ']'" class="form-control form-control-sm" placeholder="Keterangan (misal: STNK, Sertifikat)" x-model="row.keterangan">
+                                </div>
+                                <div class="col-md-2">
+                                    <button type="button" class="btn btn-sm btn-outline-danger w-100" @click="if(lampirans.length > 1) lampirans.splice(index, 1); else { row.keterangan = ''; }">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </template>
                     </div>
                 </div>
 

@@ -35,13 +35,7 @@
                 </div>
                 <div class="card-body text-center">
                     <div class="p-3 bg-white border d-inline-block rounded shadow-sm mb-3">
-                        @php
-                            $qrText = "KODE: " . $aset->kode_aset . "\n" .
-                                     "NAMA: " . $aset->nama_aset . "\n" .
-                                     "TAHUN: " . $aset->tahun_perolehan . "\n" .
-                                     "NILAI: Rp " . number_format($aset->nilai, 0, ',', '.');
-                        @endphp
-                        {!! QrCode::size(150)->generate($qrText) !!}
+                        {!! QrCode::size(150)->generate(route('public.aset.show', $aset->kode_aset)) !!}
                     </div>
                     <div class="small fw-bold text-muted mb-3">{{ $aset->kode_aset }}</div>
                     <a href="{{ route('aset.print-qr', $aset) }}" target="_blank" class="btn btn-sm btn-outline-dark w-100">
@@ -75,6 +69,10 @@
                         <div class="col-md-6">
                             <label class="text-muted small d-block mb-1">Lokasi</label>
                             <span class="fw-bold">{{ $aset->lokasi->nama_lokasi ?? '-' }}</span>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="text-muted small d-block mb-1">Pengguna Aset (Penanggung Jawab)</label>
+                            <span class="fw-bold text-primary">{{ $aset->pengguna_aset ?? '-' }}</span>
                         </div>
                         <div class="col-md-4">
                             <label class="text-muted small d-block mb-1">Tahun Perolehan</label>
@@ -126,6 +124,46 @@
                             <div class="col-md-4"><label class="text-muted small d-block">Vendor</label><span class="fw-bold">{{ $aset->kibF->vendor ?? '-' }}</span></div>
                         @endif
                     </div>
+                </div>
+            </div>
+
+            <!-- Lampiran Dokumen -->
+            <div class="card shadow mb-4 border-start border-5 border-primary">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary"><i class="bi bi-paperclip me-2"></i>Lampiran Dokumen</h6>
+                </div>
+                <div class="card-body">
+                    @if($aset->lampirans->count() > 0)
+                        <div class="row g-3">
+                            @foreach($aset->lampirans as $lampiran)
+                                <div class="col-md-6">
+                                    <div class="d-flex align-items-center p-2 border rounded bg-light">
+                                        <div class="flex-shrink-0 me-3">
+                                            <i class="bi bi-file-earmark-text fs-3 text-primary"></i>
+                                        </div>
+                                        <div class="flex-grow-1 min-w-0">
+                                            <div class="text-truncate fw-bold text-dark small" title="{{ $lampiran->nama_file }}">
+                                                {{ $lampiran->nama_file }}
+                                            </div>
+                                            <small class="text-muted d-block mt-1">
+                                                <span class="badge bg-secondary py-1">{{ $lampiran->keterangan ?? 'Lampiran' }}</span>
+                                            </small>
+                                        </div>
+                                        <div class="flex-shrink-0 ms-2">
+                                            <a href="{{ Storage::url($lampiran->path) }}" target="_blank" class="btn btn-sm btn-outline-primary" title="Lihat/Unduh">
+                                                <i class="bi bi-download"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    @else
+                        <div class="text-center py-3 text-muted">
+                            <i class="bi bi-paperclip fs-4 d-block mb-2"></i>
+                            <small>Tidak ada dokumen lampiran untuk aset ini.</small>
+                        </div>
+                    @endif
                 </div>
             </div>
 

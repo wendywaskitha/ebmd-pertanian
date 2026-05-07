@@ -83,6 +83,7 @@
                             <th>Nama Aset</th>
                             <th>KIB</th>
                             <th>Lokasi</th>
+                            <th>Pengguna</th>
                             <th>Tahun</th>
                             
                             @if(request('kib_type') == 'A')
@@ -113,6 +114,7 @@
                                 <td>{{ $aset->nama_aset }}</td>
                                 <td><span class="badge bg-secondary">KIB {{ $aset->kib_type }}</span></td>
                                 <td>{{ $aset->lokasi->nama_lokasi ?? '-' }}</td>
+                                <td class="small">{{ $aset->pengguna_aset ?? '-' }}</td>
                                 <td>{{ $aset->tahun_perolehan }}</td>
 
                                 @if(request('kib_type') == 'A')
@@ -131,7 +133,7 @@
                                 @elseif(request('kib_type') == 'F')
                                     <td>
                                         <div class="progress" style="height: 5px; width: 50px;">
-                                            <div class="progress-bar" style="width: {{ $aset->kibF?->progress ?? 0 }}%;"></div>
+                                            <div class="progress-bar" {!! 'style="width: ' . ($aset->kibF?->progress ?? 0) . '%;"' !!}></div>
                                         </div>
                                     </td>
                                 @endif
@@ -145,7 +147,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="7" class="text-center py-4 text-muted">Data tidak ditemukan.</td>
+                                <td colspan="8" class="text-center py-4 text-muted">Data tidak ditemukan.</td>
                             </tr>
                         @endforelse
                     </tbody>

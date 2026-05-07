@@ -13,7 +13,13 @@
                 @endswitch
             </p>
         </div>
-        <div class="btn-group">
+        <div class="d-flex gap-2 flex-wrap">
+            <a href="{{ route('kib.template', $type) }}" class="btn btn-sm btn-outline-success shadow-sm">
+                <i class="bi bi-file-earmark-excel me-1"></i> Unduh Template
+            </a>
+            <button type="button" class="btn btn-sm btn-success shadow-sm" data-bs-toggle="modal" data-bs-target="#importExcelModal">
+                <i class="bi bi-box-arrow-in-down me-1"></i> Impor Excel
+            </button>
             <a href="{{ route('kib.print-bulk-qr', $type) }}" target="_blank" class="btn btn-sm btn-outline-danger shadow-sm">
                 <i class="bi bi-qr-code me-1"></i> Cetak Semua QR
             </a>
@@ -87,7 +93,7 @@
                                 @elseif($type == 'F')
                                     <td>
                                         <div class="progress" style="height: 5px; width: 60px;">
-                                            <div class="progress-bar" role="progressbar" style="width: {{ $aset->kibF?->progress ?? 0 }}%;"></div>
+                                            <div class="progress-bar" role="progressbar" {!! 'style="width: ' . ($aset->kibF?->progress ?? 0) . '%;"' !!}></div>
                                         </div>
                                         <span class="x-small">{{ $aset->kibF?->progress ?? 0 }}%</span>
                                     </td>
@@ -127,5 +133,33 @@
                 {{ $asets->links() }}
             </div>
         @endif
+    </div>
+
+    <!-- Modal Impor Excel -->
+    <div class="modal fade" id="importExcelModal" tabindex="-1" aria-labelledby="importExcelModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="{{ route('kib.import', $type) }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="importExcelModalLabel"><i class="bi bi-file-earmark-excel me-2 text-success"></i>Impor Data KIB {{ $type }}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info py-2 small mb-3">
+                            <i class="bi bi-info-circle me-1"></i> Pastikan Anda menggunakan file template Excel yang telah diunduh dari tombol <strong>Unduh Template</strong> untuk menghindari kesalahan format kolom.
+                        </div>
+                        <div class="mb-3">
+                            <label for="file_excel" class="form-label small fw-bold">Pilih File Excel (.xlsx, .xls)</label>
+                            <input class="form-control form-control-sm" type="file" id="file_excel" name="file" accept=".xlsx, .xls, .csv" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer py-2">
+                        <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-sm btn-success px-3"><i class="bi bi-cloud-arrow-up me-1"></i> Mulai Impor</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 </x-bootstrap-layout>

@@ -27,7 +27,7 @@ class AsetExport implements FromQuery, WithHeadings, WithMapping
 
     public function headings(): array
     {
-        $headers = ['Kode Aset', 'Nama Aset', 'KIB', 'Lokasi', 'Tahun Perolehan', 'Nilai', 'Kondisi'];
+        $headers = ['Kode Aset', 'Nama Aset', 'KIB', 'Lokasi', 'Pengguna', 'Tahun Perolehan', 'Nilai', 'Kondisi'];
         
         if ($this->request->filled('kib_type')) {
             switch ($this->request->kib_type) {
@@ -50,6 +50,7 @@ class AsetExport implements FromQuery, WithHeadings, WithMapping
             $aset->nama_aset,
             'KIB ' . $aset->kib_type,
             $aset->lokasi->nama_lokasi ?? '-',
+            $aset->pengguna_aset ?? '-',
             $aset->tahun_perolehan,
             $aset->nilai,
             $aset->kondisi,

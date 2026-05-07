@@ -47,6 +47,7 @@
                 <th>Nama Aset</th>
                 <th>KIB</th>
                 <th>Lokasi</th>
+                <th>Pengguna</th>
                 <th>Tahun</th>
                 
                 @if($type == 'A')
@@ -78,6 +79,7 @@
                     <td>{{ $aset->nama_aset }}</td>
                     <td class="text-center">{{ $aset->kib_type }}</td>
                     <td>{{ $aset->lokasi->nama_lokasi ?? '-' }}</td>
+                    <td>{{ $aset->pengguna_aset ?? '-' }}</td>
                     <td class="text-center">{{ $aset->tahun_perolehan }}</td>
                     
                     @if($type == 'A')
