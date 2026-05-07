@@ -130,11 +130,23 @@
                                         </div>
                                         <div class="row g-2 mb-2 align-items-center">
                                             <label class="col-sm-4 col-form-label col-form-label-sm fw-bold">Status Tanah</label>
-                                            <div class="col-sm-8"><input type="text" name="status_tanah" class="form-control form-control-sm" value="{{ old('status_tanah', $aset->kibA->status_tanah ?? '') }}"></div>
+                                            <div class="col-sm-8"><input type="text" name="status_tanah" class="form-control form-control-sm" value="{{ old('status_tanah', $aset->kibA->status_tanah ?? '') }}" placeholder="Misal: Hak Milik, HGB, dll"></div>
                                         </div>
-                                        <div class="row g-2 align-items-center">
+                                        <div class="row g-2 mb-2 align-items-center">
                                             <label class="col-sm-4 col-form-label col-form-label-sm fw-bold">No. Sertifikat</label>
                                             <div class="col-sm-8"><input type="text" name="nomor_sertifikat" class="form-control form-control-sm" value="{{ old('nomor_sertifikat', $aset->kibA->nomor_sertifikat ?? '') }}"></div>
+                                        </div>
+                                        <div class="row g-2 mb-2 align-items-center">
+                                            <label class="col-sm-4 col-form-label col-form-label-sm fw-bold">Tgl. Sertifikat</label>
+                                            <div class="col-sm-8"><input type="date" name="tanggal_sertifikat" class="form-control form-control-sm" value="{{ old('tanggal_sertifikat', $aset->kibA->tanggal_sertifikat ?? '') }}"></div>
+                                        </div>
+                                        <div class="row g-2 mb-2 align-items-center">
+                                            <label class="col-sm-4 col-form-label col-form-label-sm fw-bold">Penggunaan</label>
+                                            <div class="col-sm-8"><input type="text" name="penggunaan" class="form-control form-control-sm" value="{{ old('penggunaan', $aset->kibA->penggunaan ?? '') }}" placeholder="Misal: Perkantoran, Sekolah, dll"></div>
+                                        </div>
+                                        <div class="row g-2 align-items-center">
+                                            <label class="col-sm-4 col-form-label col-form-label-sm fw-bold">Keterangan</label>
+                                            <div class="col-sm-8"><textarea name="keterangan" class="form-control form-control-sm" rows="2">{{ old('keterangan', $aset->kibA->keterangan ?? '') }}</textarea></div>
                                         </div>
                                     </div>
 
@@ -149,16 +161,36 @@
                                             <div class="col-sm-8"><input type="text" name="tipe" class="form-control form-control-sm" value="{{ old('tipe', $aset->kibB->tipe ?? '') }}"></div>
                                         </div>
                                         <div class="row g-2 mb-2 align-items-center">
+                                            <label class="col-sm-4 col-form-label col-form-label-sm fw-bold">Ukuran</label>
+                                            <div class="col-sm-8"><input type="text" name="ukuran" class="form-control form-control-sm" value="{{ old('ukuran', $aset->kibB->ukuran ?? '') }}"></div>
+                                        </div>
+                                        <div class="row g-2 mb-2 align-items-center">
                                             <label class="col-sm-4 col-form-label col-form-label-sm fw-bold">No. Seri/Mesin</label>
                                             <div class="col-sm-8"><input type="text" name="nomor_seri" class="form-control form-control-sm" value="{{ old('nomor_seri', $aset->kibB->nomor_seri ?? '') }}"></div>
+                                        </div>
+                                        <div class="row g-2 mb-2 align-items-center">
+                                            <label class="col-sm-4 col-form-label col-form-label-sm fw-bold">No. Rangka</label>
+                                            <div class="col-sm-8"><input type="text" name="nomor_rangka" class="form-control form-control-sm" value="{{ old('nomor_rangka', $aset->kibB->nomor_rangka ?? '') }}"></div>
                                         </div>
                                         <div class="row g-2 mb-2 align-items-center">
                                             <label class="col-sm-4 col-form-label col-form-label-sm fw-bold">No. Polisi/Kendaraan</label>
                                             <div class="col-sm-8"><input type="text" name="nomor_polisi" class="form-control form-control-sm" value="{{ old('nomor_polisi', $aset->kibB->nomor_polisi ?? '') }}"></div>
                                         </div>
-                                        <div class="row g-2 align-items-center">
+                                        <div class="row g-2 mb-2 align-items-center">
+                                            <label class="col-sm-4 col-form-label col-form-label-sm fw-bold">No. BPKB</label>
+                                            <div class="col-sm-8"><input type="text" name="nomor_bpkb" class="form-control form-control-sm" value="{{ old('nomor_bpkb', $aset->kibB->nomor_bpkb ?? '') }}"></div>
+                                        </div>
+                                        <div class="row g-2 mb-2 align-items-center">
                                             <label class="col-sm-4 col-form-label col-form-label-sm fw-bold">Tahun Beli</label>
                                             <div class="col-sm-8"><input type="number" name="tahun_pembelian" class="form-control form-control-sm" value="{{ old('tahun_pembelian', $aset->kibB->tahun_pembelian ?? '') }}"></div>
+                                        </div>
+                                        <div class="row g-2 mb-2 align-items-center">
+                                            <label class="col-sm-4 col-form-label col-form-label-sm fw-bold">Asal Usul</label>
+                                            <div class="col-sm-8"><input type="text" name="asal_usul" class="form-control form-control-sm" value="{{ old('asal_usul', $aset->kibB->asal_usul ?? '') }}"></div>
+                                        </div>
+                                        <div class="row g-2 align-items-center">
+                                            <label class="col-sm-4 col-form-label col-form-label-sm fw-bold">Ruang Penyimpanan</label>
+                                            <div class="col-sm-8"><input type="text" name="ruang_penyimpanan" class="form-control form-control-sm" value="{{ old('ruang_penyimpanan', $aset->kibB->ruang_penyimpanan ?? '') }}"></div>
                                         </div>
                                     </div>
 
@@ -168,21 +200,84 @@
                                             <label class="col-sm-4 col-form-label col-form-label-sm fw-bold">Luas Bangunan</label>
                                             <div class="col-sm-8"><input type="number" name="luas_bangunan" class="form-control form-control-sm" value="{{ old('luas_bangunan', $aset->kibC->luas_bangunan ?? '') }}"></div>
                                         </div>
-                                        <div class="row g-2 align-items-center">
+                                        <div class="row g-2 mb-2 align-items-center">
+                                            <label class="col-sm-4 col-form-label col-form-label-sm fw-bold">Bertingkat</label>
+                                            <div class="col-sm-8">
+                                                <select name="bertingkat" class="form-select form-select-sm">
+                                                    <option value="Tidak" {{ old('bertingkat', $aset->kibC->bertingkat ?? '') == 'Tidak' ? 'selected' : '' }}>Tidak</option>
+                                                    <option value="Ya" {{ old('bertingkat', $aset->kibC->bertingkat ?? '') == 'Ya' ? 'selected' : '' }}>Ya</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row g-2 mb-2 align-items-center">
+                                            <label class="col-sm-4 col-form-label col-form-label-sm fw-bold">Tgl. Kontrak</label>
+                                            <div class="col-sm-8"><input type="date" name="tanggal_kontrak" class="form-control form-control-sm" value="{{ old('tanggal_kontrak', $aset->kibC->tanggal_kontrak ?? '') }}"></div>
+                                        </div>
+                                        <div class="row g-2 mb-2 align-items-center">
+                                            <label class="col-sm-4 col-form-label col-form-label-sm fw-bold">No. Kontrak</label>
+                                            <div class="col-sm-8"><input type="text" name="nomor_kontrak" class="form-control form-control-sm" value="{{ old('nomor_kontrak', $aset->kibC->nomor_kontrak ?? '') }}"></div>
+                                        </div>
+                                        <div class="row g-2 mb-2 align-items-center">
                                             <label class="col-sm-4 col-form-label col-form-label-sm fw-bold">Alamat Lengkap</label>
                                             <div class="col-sm-8"><input type="text" name="alamat" class="form-control form-control-sm" value="{{ old('alamat', $aset->kibC->alamat ?? '') }}"></div>
+                                        </div>
+                                        <div class="row g-2 mb-2 align-items-center">
+                                            <label class="col-sm-4 col-form-label col-form-label-sm fw-bold">Status Tanah</label>
+                                            <div class="col-sm-8">
+                                                <select name="status_tanah" class="form-select form-select-sm">
+                                                    <option value="">Pilih Status...</option>
+                                                    <option value="Milik Sendiri" {{ old('status_tanah', $aset->kibC->status_tanah ?? '') == 'Milik Sendiri' ? 'selected' : '' }}>Milik Sendiri</option>
+                                                    <option value="Tanah Milik Pemda" {{ old('status_tanah', $aset->kibC->status_tanah ?? '') == 'Tanah Milik Pemda' ? 'selected' : '' }}>Tanah Milik Pemda</option>
+                                                    <option value="Tanah Milik Negara" {{ old('status_tanah', $aset->kibC->status_tanah ?? '') == 'Tanah Milik Negara' ? 'selected' : '' }}>Tanah Milik Negara</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row g-2 mb-2 align-items-center">
+                                            <label class="col-sm-4 col-form-label col-form-label-sm fw-bold">Kode Tanah</label>
+                                            <div class="col-sm-8"><input type="text" name="kode_tanah" class="form-control form-control-sm" value="{{ old('kode_tanah', $aset->kibC->kode_tanah ?? '') }}"></div>
+                                        </div>
+                                        <div class="row g-2 align-items-center">
+                                            <label class="col-sm-4 col-form-label col-form-label-sm fw-bold">Asal Usul</label>
+                                            <div class="col-sm-8"><input type="text" name="asal_usul" class="form-control form-control-sm" value="{{ old('asal_usul', $aset->kibC->asal_usul ?? '') }}"></div>
                                         </div>
                                     </div>
 
                                     <!-- KIB D -->
                                     <div x-show="kib_type === 'D'" class="col-12">
                                         <div class="row g-2 mb-2 align-items-center">
+                                            <label class="col-sm-4 col-form-label col-form-label-sm fw-bold">Konstruksi</label>
+                                            <div class="col-sm-8"><input type="text" name="konstruksi" class="form-control form-control-sm" value="{{ old('konstruksi', $aset->kibD->konstruksi ?? '') }}"></div>
+                                        </div>
+                                        <div class="row g-2 mb-2 align-items-center">
                                             <label class="col-sm-4 col-form-label col-form-label-sm fw-bold">Panjang (m)</label>
                                             <div class="col-sm-8"><input type="number" name="panjang" class="form-control form-control-sm" value="{{ old('panjang', $aset->kibD->panjang ?? '') }}"></div>
                                         </div>
+                                        <div class="row g-2 mb-2 align-items-center">
+                                            <label class="col-sm-4 col-form-label col-form-label-sm fw-bold">Luas (m2)</label>
+                                            <div class="col-sm-8"><input type="number" step="any" name="luas" class="form-control form-control-sm" value="{{ old('luas', $aset->kibD->luas ?? '') }}"></div>
+                                        </div>
+                                        <div class="row g-2 mb-2 align-items-center">
+                                            <label class="col-sm-4 col-form-label col-form-label-sm fw-bold">Tgl. Kontrak</label>
+                                            <div class="col-sm-8"><input type="date" name="tanggal_kontrak" class="form-control form-control-sm" value="{{ old('tanggal_kontrak', $aset->kibD->tanggal_kontrak ?? '') }}"></div>
+                                        </div>
+                                        <div class="row g-2 mb-2 align-items-center">
+                                            <label class="col-sm-4 col-form-label col-form-label-sm fw-bold">No. Kontrak</label>
+                                            <div class="col-sm-8"><input type="text" name="nomor_kontrak" class="form-control form-control-sm" value="{{ old('nomor_kontrak', $aset->kibD->nomor_kontrak ?? '') }}"></div>
+                                        </div>
+                                        <div class="row g-2 mb-2 align-items-center">
+                                            <label class="col-sm-4 col-form-label col-form-label-sm fw-bold">Status Tanah</label>
+                                            <div class="col-sm-8">
+                                                <select name="status_tanah" class="form-select form-select-sm">
+                                                    <option value="">Pilih Status...</option>
+                                                    <option value="Milik Sendiri" {{ old('status_tanah', $aset->kibD->status_tanah ?? '') == 'Milik Sendiri' ? 'selected' : '' }}>Milik Sendiri</option>
+                                                    <option value="Tanah Milik Pemda" {{ old('status_tanah', $aset->kibD->status_tanah ?? '') == 'Tanah Milik Pemda' ? 'selected' : '' }}>Tanah Milik Pemda</option>
+                                                    <option value="Tanah Milik Negara" {{ old('status_tanah', $aset->kibD->status_tanah ?? '') == 'Tanah Milik Negara' ? 'selected' : '' }}>Tanah Milik Negara</option>
+                                                </select>
+                                            </div>
+                                        </div>
                                         <div class="row g-2 align-items-center">
-                                            <label class="col-sm-4 col-form-label col-form-label-sm fw-bold">Kondisi Khusus</label>
-                                            <div class="col-sm-8"><input type="text" name="kondisi_kib_d" class="form-control form-control-sm" value="{{ old('kondisi_kib_d', $aset->kibD->kondisi_kib_d ?? '') }}"></div>
+                                            <label class="col-sm-4 col-form-label col-form-label-sm fw-bold">Asal Usul</label>
+                                            <div class="col-sm-8"><input type="text" name="asal_usul" class="form-control form-control-sm" value="{{ old('asal_usul', $aset->kibD->asal_usul ?? '') }}"></div>
                                         </div>
                                     </div>
 
@@ -201,16 +296,40 @@
                                     <!-- KIB F -->
                                     <div x-show="kib_type === 'F'" class="col-12">
                                         <div class="row g-2 mb-2 align-items-center">
-                                            <label class="col-sm-4 col-form-label col-form-label-sm fw-bold">Progress (%)</label>
-                                            <div class="col-sm-8"><input type="number" name="progress" class="form-control form-control-sm" value="{{ old('progress', $aset->kibF->progress ?? '') }}"></div>
+                                            <label class="col-sm-4 col-form-label col-form-label-sm fw-bold">Bertingkat</label>
+                                            <div class="col-sm-8">
+                                                <select name="bertingkat" class="form-select form-select-sm">
+                                                    <option value="Tidak" {{ old('bertingkat', $aset->kibF->bertingkat ?? '') == 'Tidak' ? 'selected' : '' }}>Tidak</option>
+                                                    <option value="Ya" {{ old('bertingkat', $aset->kibF->bertingkat ?? '') == 'Ya' ? 'selected' : '' }}>Ya</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row g-2 mb-2 align-items-center">
+                                            <label class="col-sm-4 col-form-label col-form-label-sm fw-bold">Tgl. Kontrak</label>
+                                            <div class="col-sm-8"><input type="date" name="tanggal_kontrak" class="form-control form-control-sm" value="{{ old('tanggal_kontrak', $aset->kibF->tanggal_kontrak ?? '') }}"></div>
                                         </div>
                                         <div class="row g-2 mb-2 align-items-center">
                                             <label class="col-sm-4 col-form-label col-form-label-sm fw-bold">Nilai Kontrak</label>
                                             <div class="col-sm-8"><input type="number" name="nilai_kontrak" class="form-control form-control-sm" value="{{ old('nilai_kontrak', $aset->kibF->nilai_kontrak ?? '') }}"></div>
                                         </div>
+                                        <div class="row g-2 mb-2 align-items-center">
+                                            <label class="col-sm-4 col-form-label col-form-label-sm fw-bold">Status Tanah</label>
+                                            <div class="col-sm-8">
+                                                <select name="status_tanah" class="form-select form-select-sm">
+                                                    <option value="">Pilih Status...</option>
+                                                    <option value="Milik Sendiri" {{ old('status_tanah', $aset->kibF->status_tanah ?? '') == 'Milik Sendiri' ? 'selected' : '' }}>Milik Sendiri</option>
+                                                    <option value="Tanah Milik Pemda" {{ old('status_tanah', $aset->kibF->status_tanah ?? '') == 'Tanah Milik Pemda' ? 'selected' : '' }}>Tanah Milik Pemda</option>
+                                                    <option value="Tanah Milik Negara" {{ old('status_tanah', $aset->kibF->status_tanah ?? '') == 'Tanah Milik Negara' ? 'selected' : '' }}>Tanah Milik Negara</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row g-2 mb-2 align-items-center">
+                                            <label class="col-sm-4 col-form-label col-form-label-sm fw-bold">Asal Usul</label>
+                                            <div class="col-sm-8"><input type="text" name="asal_usul" class="form-control form-control-sm" value="{{ old('asal_usul', $aset->kibF->asal_usul ?? '') }}"></div>
+                                        </div>
                                         <div class="row g-2 align-items-center">
-                                            <label class="col-sm-4 col-form-label col-form-label-sm fw-bold">Vendor</label>
-                                            <div class="col-sm-8"><input type="text" name="vendor" class="form-control form-control-sm" value="{{ old('vendor', $aset->kibF->vendor ?? '') }}"></div>
+                                            <label class="col-sm-4 col-form-label col-form-label-sm fw-bold">Sisa Kontrak</label>
+                                            <div class="col-sm-8"><input type="number" name="sisa_kontrak" class="form-control form-control-sm" value="{{ old('sisa_kontrak', $aset->kibF->sisa_kontrak ?? '') }}"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -224,12 +343,12 @@
                             <div class="card-body">
                                 <h6 class="fw-bold mb-3"><i class="bi bi-card-checklist text-primary me-2"></i>Daftar Atribut Khusus</h6>
                                 <div class="small text-muted">
-                                    <div class="mb-2"><span class="badge bg-secondary">KIB A</span> Luas (m2), Status Tanah, No. Sertifikat</div>
-                                    <div class="mb-2"><span class="badge bg-secondary">KIB B</span> Merk, Tipe, No. Seri/Mesin, Tahun Beli</div>
-                                    <div class="mb-2"><span class="badge bg-secondary">KIB C</span> Luas Bangunan, Alamat Lengkap</div>
-                                    <div class="mb-2"><span class="badge bg-secondary">KIB D</span> Panjang (m), Kondisi Khusus</div>
+                                    <div class="mb-2"><span class="badge bg-secondary">KIB A</span> Luas (m2), Status Tanah, No. Sertifikat, Tgl. Sertifikat, Penggunaan, Keterangan</div>
+                                    <div class="mb-2"><span class="badge bg-secondary">KIB B</span> Merk, Tipe, Ukuran, No. Seri, No. Rangka, No. Polisi, No. BPKB, Tahun Beli, Asal Usul, Ruang</div>
+                                    <div class="mb-2"><span class="badge bg-secondary">KIB C</span> Luas, Bertingkat, Kontrak, Alamat, Status Tanah, Kode Tanah</div>
+                                    <div class="mb-2"><span class="badge bg-secondary">KIB D</span> Konstruksi, Panjang, Luas, Kontrak, Status Tanah</div>
                                     <div class="mb-2"><span class="badge bg-secondary">KIB E</span> Jenis, Keterangan</div>
-                                    <div class="mb-0"><span class="badge bg-secondary">KIB F</span> Progress (%), Nilai Kontrak, Vendor</div>
+                                    <div class="mb-0"><span class="badge bg-secondary">KIB F</span> Bertingkat, Kontrak, Status Tanah, Sisa</div>
                                 </div>
                             </div>
                         </div>

@@ -103,25 +103,47 @@
                             <div class="col-md-4"><label class="text-muted small d-block">Luas</label><span class="fw-bold">{{ $aset->kibA->luas }} m2</span></div>
                             <div class="col-md-4"><label class="text-muted small d-block">Status Tanah</label><span class="fw-bold">{{ $aset->kibA->status_tanah }}</span></div>
                             <div class="col-md-4"><label class="text-muted small d-block">No. Sertifikat</label><span class="fw-bold">{{ $aset->kibA->nomor_sertifikat ?? '-' }}</span></div>
+                            <div class="col-md-4"><label class="text-muted small d-block">Tgl. Sertifikat</label><span class="fw-bold">{{ $aset->kibA->tanggal_sertifikat ? \Carbon\Carbon::parse($aset->kibA->tanggal_sertifikat)->format('d/m/Y') : '-' }}</span></div>
+                            <div class="col-md-4"><label class="text-muted small d-block">Penggunaan</label><span class="fw-bold">{{ $aset->kibA->penggunaan ?? '-' }}</span></div>
+                            <div class="col-12"><label class="text-muted small d-block">Keterangan</label><span class="fw-bold">{{ $aset->kibA->keterangan ?? '-' }}</span></div>
                         @elseif($aset->kib_type == 'B' && $aset->kibB)
                             <div class="col-md-3"><label class="text-muted small d-block">Merk</label><span class="fw-bold">{{ $aset->kibB->merk ?? '-' }}</span></div>
                             <div class="col-md-3"><label class="text-muted small d-block">Tipe</label><span class="fw-bold">{{ $aset->kibB->tipe ?? '-' }}</span></div>
+                            <div class="col-md-3"><label class="text-muted small d-block">Ukuran</label><span class="fw-bold">{{ $aset->kibB->ukuran ?? '-' }}</span></div>
                             <div class="col-md-3"><label class="text-muted small d-block">No. Seri</label><span class="fw-bold">{{ $aset->kibB->nomor_seri ?? '-' }}</span></div>
+                            <div class="col-md-3"><label class="text-muted small d-block">No. Rangka</label><span class="fw-bold">{{ $aset->kibB->nomor_rangka ?? '-' }}</span></div>
                             <div class="col-md-3"><label class="text-muted small d-block">No. Polisi</label><span class="fw-bold">{{ $aset->kibB->nomor_polisi ?? '-' }}</span></div>
+                            <div class="col-md-3"><label class="text-muted small d-block">No. BPKB</label><span class="fw-bold">{{ $aset->kibB->nomor_bpkb ?? '-' }}</span></div>
                             <div class="col-md-3"><label class="text-muted small d-block">Tahun Beli</label><span class="fw-bold">{{ $aset->kibB->tahun_pembelian ?? '-' }}</span></div>
+                            <div class="col-md-6"><label class="text-muted small d-block">Asal Usul</label><span class="fw-bold">{{ $aset->kibB->asal_usul ?? '-' }}</span></div>
+                            <div class="col-md-6"><label class="text-muted small d-block">Ruang Penyimpanan</label><span class="fw-bold">{{ $aset->kibB->ruang_penyimpanan ?? '-' }}</span></div>
                         @elseif($aset->kib_type == 'C' && $aset->kibC)
                             <div class="col-md-4"><label class="text-muted small d-block">Luas Bangunan</label><span class="fw-bold">{{ $aset->kibC->luas_bangunan }} m2</span></div>
+                            <div class="col-md-4"><label class="text-muted small d-block">Bertingkat</label><span class="fw-bold">{{ $aset->kibC->bertingkat ?? '-' }}</span></div>
+                            <div class="col-md-4"><label class="text-muted small d-block">Tgl. Kontrak</label><span class="fw-bold">{{ $aset->kibC->tanggal_kontrak ? \Carbon\Carbon::parse($aset->kibC->tanggal_kontrak)->format('d/m/Y') : '-' }}</span></div>
+                            <div class="col-md-4"><label class="text-muted small d-block">No. Kontrak</label><span class="fw-bold">{{ $aset->kibC->nomor_kontrak ?? '-' }}</span></div>
                             <div class="col-md-8"><label class="text-muted small d-block">Alamat</label><span class="fw-bold">{{ $aset->kibC->alamat ?? '-' }}</span></div>
+                            <div class="col-md-4"><label class="text-muted small d-block">Status Tanah</label><span class="fw-bold">{{ $aset->kibC->status_tanah ?? '-' }}</span></div>
+                            <div class="col-md-4"><label class="text-muted small d-block">Kode Tanah</label><span class="fw-bold">{{ $aset->kibC->kode_tanah ?? '-' }}</span></div>
+                            <div class="col-md-4"><label class="text-muted small d-block">Asal Usul</label><span class="fw-bold">{{ $aset->kibC->asal_usul ?? '-' }}</span></div>
                         @elseif($aset->kib_type == 'D' && $aset->kibD)
-                            <div class="col-md-6"><label class="text-muted small d-block">Panjang</label><span class="fw-bold">{{ $aset->kibD->panjang }} m</span></div>
-                            <div class="col-md-6"><label class="text-muted small d-block">Kondisi Khusus</label><span class="fw-bold">{{ $aset->kibD->kondisi_kib_d ?? '-' }}</span></div>
+                            <div class="col-md-4"><label class="text-muted small d-block">Konstruksi</label><span class="fw-bold">{{ $aset->kibD->konstruksi ?? '-' }}</span></div>
+                            <div class="col-md-4"><label class="text-muted small d-block">Panjang</label><span class="fw-bold">{{ $aset->kibD->panjang }} m</span></div>
+                            <div class="col-md-4"><label class="text-muted small d-block">Luas</label><span class="fw-bold">{{ $aset->kibD->luas }} m2</span></div>
+                            <div class="col-md-4"><label class="text-muted small d-block">Tgl. Kontrak</label><span class="fw-bold">{{ $aset->kibD->tanggal_kontrak ? \Carbon\Carbon::parse($aset->kibD->tanggal_kontrak)->format('d/m/Y') : '-' }}</span></div>
+                            <div class="col-md-4"><label class="text-muted small d-block">No. Kontrak</label><span class="fw-bold">{{ $aset->kibD->nomor_kontrak ?? '-' }}</span></div>
+                            <div class="col-md-4"><label class="text-muted small d-block">Status Tanah</label><span class="fw-bold">{{ $aset->kibD->status_tanah ?? '-' }}</span></div>
+                            <div class="col-md-12"><label class="text-muted small d-block">Asal Usul</label><span class="fw-bold">{{ $aset->kibD->asal_usul ?? '-' }}</span></div>
                         @elseif($aset->kib_type == 'E' && $aset->kibE)
                             <div class="col-md-6"><label class="text-muted small d-block">Jenis</label><span class="fw-bold">{{ $aset->kibE->jenis }}</span></div>
                             <div class="col-md-6"><label class="text-muted small d-block">Keterangan</label><span class="fw-bold">{{ $aset->kibE->keterangan ?? '-' }}</span></div>
                         @elseif($aset->kib_type == 'F' && $aset->kibF)
-                            <div class="col-md-4"><label class="text-muted small d-block">Progress</label><span class="fw-bold">{{ $aset->kibF->progress }}%</span></div>
-                            <div class="col-md-4"><label class="text-muted small d-block">Nilai Kontrak</label><span class="fw-bold text-success">Rp {{ number_format($aset->kibF->nilai_kontrak, 0, ',', '.') }}</span></div>
-                            <div class="col-md-4"><label class="text-muted small d-block">Vendor</label><span class="fw-bold">{{ $aset->kibF->vendor ?? '-' }}</span></div>
+                            <div class="col-md-4"><label class="text-muted small d-block">Bertingkat</label><span class="fw-bold">{{ $aset->kibF->bertingkat ?? '-' }}</span></div>
+                            <div class="col-md-4"><label class="text-muted small d-block">Tgl. Kontrak</label><span class="fw-bold">{{ $aset->kibF->tanggal_kontrak ? \Carbon\Carbon::parse($aset->kibF->tanggal_kontrak)->format('d/m/Y') : '-' }}</span></div>
+                            <div class="col-md-4"><label class="text-muted small d-block">Nilai Kontrak</label><span class="fw-bold">Rp {{ number_format($aset->kibF->nilai_kontrak, 0, ',', '.') }}</span></div>
+                            <div class="col-md-4"><label class="text-muted small d-block">Status Tanah</label><span class="fw-bold">{{ $aset->kibF->status_tanah ?? '-' }}</span></div>
+                            <div class="col-md-4"><label class="text-muted small d-block">Asal Usul</label><span class="fw-bold">{{ $aset->kibF->asal_usul ?? '-' }}</span></div>
+                            <div class="col-md-4"><label class="text-muted small d-block">Sisa Kontrak</label><span class="fw-bold">{{ $aset->kibF->sisa_kontrak ?? '-' }}</span></div>
                         @endif
                     </div>
                 </div>

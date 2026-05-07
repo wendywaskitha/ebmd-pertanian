@@ -79,6 +79,9 @@ class KibImport implements ToCollection, WithHeadingRow
                             'luas' => $row['luas_m2'] ?? $row['luas'] ?? 0,
                             'status_tanah' => $row['status_tanah'] ?? 'Hak Milik',
                             'nomor_sertifikat' => $row['nomor_sertifikat'] ?? null,
+                            'tanggal_sertifikat' => $row['tanggal_sertifikat'] ?? null,
+                            'penggunaan' => $row['penggunaan'] ?? null,
+                            'keterangan' => $row['keterangan'] ?? null,
                         ]);
                         break;
                     case 'B':
@@ -86,23 +89,39 @@ class KibImport implements ToCollection, WithHeadingRow
                             'aset_id' => $aset->id,
                             'merk' => $row['merk'] ?? null,
                             'tipe' => $row['tipe'] ?? null,
+                            'ukuran' => $row['ukuran'] ?? null,
                             'nomor_seri' => $row['nomor_seri'] ?? null,
+                            'nomor_rangka' => $row['nomor_rangka'] ?? null,
                             'nomor_polisi' => $row['nomor_polisi'] ?? null,
+                            'nomor_bpkb' => $row['nomor_bpkb'] ?? null,
                             'tahun_pembelian' => $row['tahun_pembelian'] ?? null,
+                            'asal_usul' => $row['asal_usul'] ?? null,
+                            'ruang_penyimpanan' => $row['ruang_penyimpanan'] ?? null,
                         ]);
                         break;
                     case 'C':
                         KibC::create([
                             'aset_id' => $aset->id,
                             'luas_bangunan' => $row['luas_bangunan_m2'] ?? $row['luas_bangunan'] ?? 0,
+                            'bertingkat' => $row['bertingkat'] ?? 'Tidak',
+                            'tanggal_kontrak' => $row['tanggal_kontrak'] ?? null,
+                            'nomor_kontrak' => $row['nomor_kontrak'] ?? null,
                             'alamat' => $row['alamat'] ?? null,
+                            'status_tanah' => $row['status_tanah'] ?? null,
+                            'kode_tanah' => $row['kode_tanah'] ?? null,
+                            'asal_usul' => $row['asal_usul'] ?? null,
                         ]);
                         break;
                     case 'D':
                         KibD::create([
                             'aset_id' => $aset->id,
+                            'konstruksi' => $row['konstruksi'] ?? null,
                             'panjang' => $row['panjang_m'] ?? $row['panjang'] ?? 0,
-                            'kondisi_kib_d' => $row['kondisi_kib_d'] ?? null,
+                            'luas' => $row['luas_m2'] ?? $row['luas'] ?? 0,
+                            'tanggal_kontrak' => $row['tanggal_kontrak'] ?? null,
+                            'nomor_kontrak' => $row['nomor_kontrak'] ?? null,
+                            'status_tanah' => $row['status_tanah'] ?? null,
+                            'asal_usul' => $row['asal_usul'] ?? null,
                         ]);
                         break;
                     case 'E':
@@ -115,9 +134,12 @@ class KibImport implements ToCollection, WithHeadingRow
                     case 'F':
                         KibF::create([
                             'aset_id' => $aset->id,
-                            'progress' => $row['progress'] ?? $row['progress_percent'] ?? 0,
+                            'bertingkat' => $row['bertingkat'] ?? 'Tidak',
+                            'tanggal_kontrak' => $row['tanggal_kontrak'] ?? null,
                             'nilai_kontrak' => $row['nilai_kontrak'] ?? 0,
-                            'vendor' => $row['vendor'] ?? null,
+                            'status_tanah' => $row['status_tanah'] ?? null,
+                            'asal_usul' => $row['asal_usul'] ?? null,
+                            'sisa_kontrak' => $row['sisa_kontrak'] ?? 0,
                         ]);
                         break;
                 }

@@ -31,12 +31,12 @@ class AsetExport implements FromQuery, WithHeadings, WithMapping
         
         if ($this->request->filled('kib_type')) {
             switch ($this->request->kib_type) {
-                case 'A': $headers = array_merge($headers, ['Luas', 'Status Tanah', 'No. Sertifikat']); break;
-                case 'B': $headers = array_merge($headers, ['Merk', 'Tipe', 'No. Seri', 'No. Polisi', 'Tahun Beli']); break;
-                case 'C': $headers = array_merge($headers, ['Luas Bangunan', 'Alamat']); break;
-                case 'D': $headers = array_merge($headers, ['Panjang', 'Kondisi Khusus']); break;
+                case 'A': $headers = array_merge($headers, ['Luas', 'Status Tanah', 'No. Sertifikat', 'Tgl. Sertifikat', 'Penggunaan', 'Keterangan']); break;
+                case 'B': $headers = array_merge($headers, ['Merk', 'Tipe', 'Ukuran', 'No. Seri', 'No. Rangka', 'No. Polisi', 'No. BPKB', 'Tahun Beli', 'Asal Usul', 'Ruang']); break;
+                case 'C': $headers = array_merge($headers, ['Luas Bangunan', 'Bertingkat', 'Tgl. Kontrak', 'No. Kontrak', 'Alamat', 'Status Tanah', 'Kode Tanah', 'Asal Usul']); break;
+                case 'D': $headers = array_merge($headers, ['Konstruksi', 'Panjang', 'Luas', 'Tgl. Kontrak', 'No. Kontrak', 'Status Tanah', 'Asal Usul']); break;
                 case 'E': $headers = array_merge($headers, ['Jenis', 'Keterangan']); break;
-                case 'F': $headers = array_merge($headers, ['Progress (%)', 'Nilai Kontrak', 'Vendor']); break;
+                case 'F': $headers = array_merge($headers, ['Bertingkat', 'Tgl. Kontrak', 'Nilai Kontrak', 'Status Tanah', 'Asal Usul', 'Sisa Kontrak']); break;
             }
         }
         
@@ -59,22 +59,64 @@ class AsetExport implements FromQuery, WithHeadings, WithMapping
         if ($this->request->filled('kib_type')) {
             switch ($this->request->kib_type) {
                 case 'A':
-                    $data = array_merge($data, [$aset->kibA->luas ?? '', $aset->kibA->status_tanah ?? '', $aset->kibA->nomor_sertifikat ?? '']);
+                    $data = array_merge($data, [
+                        $aset->kibA->luas ?? '', 
+                        $aset->kibA->status_tanah ?? '', 
+                        $aset->kibA->nomor_sertifikat ?? '',
+                        $aset->kibA->tanggal_sertifikat ?? '',
+                        $aset->kibA->penggunaan ?? '',
+                        $aset->kibA->keterangan ?? ''
+                    ]);
                     break;
                 case 'B':
-                    $data = array_merge($data, [$aset->kibB->merk ?? '', $aset->kibB->tipe ?? '', $aset->kibB->nomor_seri ?? '', $aset->kibB->nomor_polisi ?? '', $aset->kibB->tahun_pembelian ?? '']);
+                    $data = array_merge($data, [
+                        $aset->kibB->merk ?? '', 
+                        $aset->kibB->tipe ?? '', 
+                        $aset->kibB->ukuran ?? '', 
+                        $aset->kibB->nomor_seri ?? '', 
+                        $aset->kibB->nomor_rangka ?? '', 
+                        $aset->kibB->nomor_polisi ?? '', 
+                        $aset->kibB->nomor_bpkb ?? '', 
+                        $aset->kibB->tahun_pembelian ?? '',
+                        $aset->kibB->asal_usul ?? '',
+                        $aset->kibB->ruang_penyimpanan ?? ''
+                    ]);
                     break;
                 case 'C':
-                    $data = array_merge($data, [$aset->kibC->luas_bangunan ?? '', $aset->kibC->alamat ?? '']);
+                    $data = array_merge($data, [
+                        $aset->kibC->luas_bangunan ?? '', 
+                        $aset->kibC->bertingkat ?? '', 
+                        $aset->kibC->tanggal_kontrak ?? '', 
+                        $aset->kibC->nomor_kontrak ?? '', 
+                        $aset->kibC->alamat ?? '', 
+                        $aset->kibC->status_tanah ?? '', 
+                        $aset->kibC->kode_tanah ?? '', 
+                        $aset->kibC->asal_usul ?? ''
+                    ]);
                     break;
                 case 'D':
-                    $data = array_merge($data, [$aset->kibD->panjang ?? '', $aset->kibD->kondisi_kib_d ?? '']);
+                    $data = array_merge($data, [
+                        $aset->kibD->konstruksi ?? '', 
+                        $aset->kibD->panjang ?? '', 
+                        $aset->kibD->luas ?? '', 
+                        $aset->kibD->tanggal_kontrak ?? '', 
+                        $aset->kibD->nomor_kontrak ?? '', 
+                        $aset->kibD->status_tanah ?? '', 
+                        $aset->kibD->asal_usul ?? ''
+                    ]);
                     break;
                 case 'E':
                     $data = array_merge($data, [$aset->kibE->jenis ?? '', $aset->kibE->keterangan ?? '']);
                     break;
                 case 'F':
-                    $data = array_merge($data, [($aset->kibF->progress ?? 0) . '%', $aset->kibF->nilai_kontrak ?? '', $aset->kibF->vendor ?? '']);
+                    $data = array_merge($data, [
+                        $aset->kibF->bertingkat ?? '', 
+                        $aset->kibF->tanggal_kontrak ?? '', 
+                        $aset->kibF->nilai_kontrak ?? '', 
+                        $aset->kibF->status_tanah ?? '', 
+                        $aset->kibF->asal_usul ?? '', 
+                        $aset->kibF->sisa_kontrak ?? ''
+                    ]);
                     break;
             }
         }

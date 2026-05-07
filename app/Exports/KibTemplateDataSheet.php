@@ -38,30 +38,52 @@ class KibTemplateDataSheet implements WithHeadings, WithTitle, WithStyles
                 $headings[] = 'Luas (m2)';
                 $headings[] = 'Status Tanah';
                 $headings[] = 'Nomor Sertifikat';
+                $headings[] = 'Tanggal Sertifikat';
+                $headings[] = 'Penggunaan';
+                $headings[] = 'Keterangan';
                 break;
             case 'B':
                 $headings[] = 'Merk';
                 $headings[] = 'Tipe';
+                $headings[] = 'Ukuran';
                 $headings[] = 'Nomor Seri';
+                $headings[] = 'Nomor Rangka';
                 $headings[] = 'Nomor Polisi';
+                $headings[] = 'Nomor BPKB';
                 $headings[] = 'Tahun Pembelian';
+                $headings[] = 'Asal Usul';
+                $headings[] = 'Ruang Penyimpanan';
                 break;
             case 'C':
                 $headings[] = 'Luas Bangunan (m2)';
+                $headings[] = 'Bertingkat';
+                $headings[] = 'Tanggal Kontrak';
+                $headings[] = 'Nomor Kontrak';
                 $headings[] = 'Alamat';
+                $headings[] = 'Status Tanah';
+                $headings[] = 'Kode Tanah';
+                $headings[] = 'Asal Usul';
                 break;
             case 'D':
+                $headings[] = 'Konstruksi';
                 $headings[] = 'Panjang (m)';
-                $headings[] = 'Kondisi KIB D';
+                $headings[] = 'Luas (m2)';
+                $headings[] = 'Tanggal Kontrak';
+                $headings[] = 'Nomor Kontrak';
+                $headings[] = 'Status Tanah';
+                $headings[] = 'Asal Usul';
                 break;
             case 'E':
                 $headings[] = 'Jenis';
                 $headings[] = 'Keterangan';
                 break;
             case 'F':
-                $headings[] = 'Progress (%)';
+                $headings[] = 'Bertingkat';
+                $headings[] = 'Tanggal Kontrak';
                 $headings[] = 'Nilai Kontrak';
-                $headings[] = 'Vendor';
+                $headings[] = 'Status Tanah';
+                $headings[] = 'Asal Usul';
+                $headings[] = 'Sisa Kontrak';
                 break;
         }
 

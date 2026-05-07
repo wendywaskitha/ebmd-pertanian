@@ -50,30 +50,52 @@ class KibTemplateGuidanceSheet implements FromCollection, WithHeadings, WithTitl
                 $guidelines[] = ['Luas (m2)', 'Angka (Wajib)', 'Luas tanah dalam meter persegi (Misal: 500)'];
                 $guidelines[] = ['Status Tanah', 'Teks (Wajib)', 'Misal: Hak Milik, HGB, dll'];
                 $guidelines[] = ['Nomor Sertifikat', 'Teks (Opsional)', 'Nomor dokumen sertifikat tanah'];
+                $guidelines[] = ['Tanggal Sertifikat', 'Tanggal (Opsional)', 'Format: YYYY-MM-DD (Misal: 2024-05-07)'];
+                $guidelines[] = ['Penggunaan', 'Teks (Opsional)', 'Misal: Perkantoran, Sekolah, dll'];
+                $guidelines[] = ['Keterangan', 'Teks (Opsional)', 'Keterangan tambahan tanah'];
                 break;
             case 'B':
                 $guidelines[] = ['Merk', 'Teks (Opsional)', 'Merk barang (Misal: Toyota, Honda)'];
                 $guidelines[] = ['Tipe', 'Teks (Opsional)', 'Tipe barang (Misal: Avanza, Vario)'];
-                $guidelines[] = ['Nomor Seri', 'Teks (Opsional)', 'Nomor rangka/mesin/seri pabrik'];
+                $guidelines[] = ['Ukuran', 'Teks (Opsional)', 'Ukuran barang (Misal: 150cc, 2x3m)'];
+                $guidelines[] = ['Nomor Seri', 'Teks (Opsional)', 'Nomor seri pabrik'];
+                $guidelines[] = ['Nomor Rangka', 'Teks (Opsional)', 'Nomor rangka kendaraan/mesin'];
                 $guidelines[] = ['Nomor Polisi', 'Teks (Opsional)', 'Nomor polisi kendaraan (Misal: B 1234 ABC)'];
+                $guidelines[] = ['Nomor BPKB', 'Teks (Opsional)', 'Nomor dokumen BPKB'];
                 $guidelines[] = ['Tahun Pembelian', 'Angka (Opsional)', 'Format: YYYY (Misal: 2023)'];
+                $guidelines[] = ['Asal Usul', 'Teks (Opsional)', 'Asal usul perolehan (Misal: Pembelian, Hibah)'];
+                $guidelines[] = ['Ruang Penyimpanan', 'Teks (Opsional)', 'Lokasi spesifik penyimpanan (Misal: Ruang Kerja A)'];
                 break;
             case 'C':
                 $guidelines[] = ['Luas Bangunan (m2)', 'Angka (Wajib)', 'Luas gedung dalam meter persegi (Misal: 250)'];
+                $guidelines[] = ['Bertingkat', 'Teks (Wajib)', 'Pilihan: Ya, Tidak'];
+                $guidelines[] = ['Tanggal Kontrak', 'Tanggal (Opsional)', 'Format: YYYY-MM-DD (Misal: 2024-05-07)'];
+                $guidelines[] = ['Nomor Kontrak', 'Teks (Opsional)', 'Nomor dokumen kontrak pembangunan'];
                 $guidelines[] = ['Alamat', 'Teks (Wajib)', 'Alamat lengkap bangunan'];
+                $guidelines[] = ['Status Tanah', 'Teks (Opsional)', 'Opsi: Milik Sendiri, Tanah Milik Pemda, Tanah Milik Negara'];
+                $guidelines[] = ['Kode Tanah', 'Teks (Opsional)', 'Kode identitas tanah'];
+                $guidelines[] = ['Asal Usul', 'Teks (Opsional)', 'Asal perolehan (Misal: APBD, Hibah)'];
                 break;
             case 'D':
+                $guidelines[] = ['Konstruksi', 'Teks (Opsional)', 'Jenis konstruksi (Misal: Aspal, Beton)'];
                 $guidelines[] = ['Panjang (m)', 'Angka (Wajib)', 'Panjang jalan/jaringan dalam meter (Misal: 1200)'];
-                $guidelines[] = ['Kondisi KIB D', 'Teks (Opsional)', 'Kondisi khusus (Misal: Aspal, Beton)'];
+                $guidelines[] = ['Luas (m2)', 'Angka (Opsional)', 'Luas tanah/jaringan (Misal: 5000)'];
+                $guidelines[] = ['Tanggal Kontrak', 'Tanggal (Opsional)', 'Format: YYYY-MM-DD'];
+                $guidelines[] = ['Nomor Kontrak', 'Teks (Opsional)', 'Nomor dokumen kontrak'];
+                $guidelines[] = ['Status Tanah', 'Teks (Opsional)', 'Opsi: Milik Sendiri, Tanah Milik Pemda, Tanah Milik Negara'];
+                $guidelines[] = ['Asal Usul', 'Teks (Opsional)', 'Asal perolehan'];
                 break;
             case 'E':
                 $guidelines[] = ['Jenis', 'Teks (Wajib)', 'Jenis aset (Misal: Buku, Alat Kesenian)'];
                 $guidelines[] = ['Keterangan', 'Teks (Opsional)', 'Keterangan tambahan'];
                 break;
             case 'F':
-                $guidelines[] = ['Progress (%)', 'Angka (Wajib)', 'Persentase pengerjaan 0-100 (Misal: 75)'];
-                $guidelines[] = ['Nilai Kontrak', 'Angka (Wajib)', 'Total kontrak dalam rupiah (Misal: 50000000)'];
-                $guidelines[] = ['Vendor', 'Teks (Opsional)', 'Nama kontraktor/pihak ketiga'];
+                $guidelines[] = ['Bertingkat', 'Teks (Wajib)', 'Pilihan: Ya, Tidak'];
+                $guidelines[] = ['Tanggal Kontrak', 'Tanggal (Opsional)', 'Format: YYYY-MM-DD'];
+                $guidelines[] = ['Nilai Kontrak', 'Angka (Wajib)', 'Nilai total kontrak'];
+                $guidelines[] = ['Status Tanah', 'Teks (Opsional)', 'Opsi: Milik Sendiri, Tanah Milik Pemda, Tanah Milik Negara'];
+                $guidelines[] = ['Asal Usul', 'Teks (Opsional)', 'Asal perolehan'];
+                $guidelines[] = ['Sisa Kontrak', 'Angka (Opsional)', 'Sisa nilai kontrak'];
                 break;
         }
 

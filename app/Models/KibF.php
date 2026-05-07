@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class KibF extends Model
 {
     protected $table = 'kib_fs';
-    protected $fillable = ['aset_id', 'progress', 'nilai_kontrak', 'vendor'];
+    protected $fillable = ['aset_id', 'bertingkat', 'tanggal_kontrak', 'nilai_kontrak', 'status_tanah', 'asal_usul', 'sisa_kontrak'];
 
     public function aset()
     {

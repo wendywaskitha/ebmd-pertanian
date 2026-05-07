@@ -196,22 +196,22 @@ class AsetController extends Controller
     {
         switch ($request->kib_type) {
             case 'A':
-                $aset->kibA()->updateOrCreate(['aset_id' => $aset->id], $request->only(['luas', 'status_tanah', 'nomor_sertifikat']));
+                $aset->kibA()->updateOrCreate(['aset_id' => $aset->id], $request->only(['luas', 'status_tanah', 'nomor_sertifikat', 'tanggal_sertifikat', 'penggunaan', 'keterangan']));
                 break;
             case 'B':
-                $aset->kibB()->updateOrCreate(['aset_id' => $aset->id], $request->only(['merk', 'tipe', 'nomor_seri', 'nomor_polisi', 'tahun_pembelian']));
+                $aset->kibB()->updateOrCreate(['aset_id' => $aset->id], $request->only(['merk', 'tipe', 'ukuran', 'nomor_seri', 'nomor_rangka', 'nomor_polisi', 'nomor_bpkb', 'tahun_pembelian', 'asal_usul', 'ruang_penyimpanan']));
                 break;
             case 'C':
-                $aset->kibC()->updateOrCreate(['aset_id' => $aset->id], $request->only(['luas_bangunan', 'alamat']));
+                $aset->kibC()->updateOrCreate(['aset_id' => $aset->id], $request->only(['luas_bangunan', 'bertingkat', 'tanggal_kontrak', 'nomor_kontrak', 'alamat', 'status_tanah', 'kode_tanah', 'asal_usul']));
                 break;
             case 'D':
-                $aset->kibD()->updateOrCreate(['aset_id' => $aset->id], $request->only(['panjang', 'kondisi_kib_d']));
+                $aset->kibD()->updateOrCreate(['aset_id' => $aset->id], $request->only(['konstruksi', 'panjang', 'luas', 'tanggal_kontrak', 'nomor_kontrak', 'status_tanah', 'asal_usul']));
                 break;
             case 'E':
                 $aset->kibE()->updateOrCreate(['aset_id' => $aset->id], $request->only(['jenis', 'keterangan']));
                 break;
             case 'F':
-                $aset->kibF()->updateOrCreate(['aset_id' => $aset->id], $request->only(['progress', 'nilai_kontrak', 'vendor']));
+                $aset->kibF()->updateOrCreate(['aset_id' => $aset->id], $request->only(['bertingkat', 'tanggal_kontrak', 'nilai_kontrak', 'status_tanah', 'asal_usul', 'sisa_kontrak']));
                 break;
         }
     }
