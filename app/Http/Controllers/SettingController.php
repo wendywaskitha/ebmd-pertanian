@@ -21,6 +21,11 @@ class SettingController extends Controller
             'kepala_nama' => Setting::get('kepala_nama'),
             'kepala_pangkat' => Setting::get('kepala_pangkat'),
             'kepala_nip' => Setting::get('kepala_nip'),
+            'kepala_jabatan' => Setting::get('kepala_jabatan', 'Kepala Instansi'),
+            'pengurus_nama' => Setting::get('pengurus_nama'),
+            'pengurus_pangkat' => Setting::get('pengurus_pangkat'),
+            'pengurus_nip' => Setting::get('pengurus_nip'),
+            'pengurus_jabatan' => Setting::get('pengurus_jabatan', 'Pengurus Barang'),
             'footer_text' => Setting::get('footer_text', '© ' . date('Y') . ' Simaset Muna Barat'),
         ];
         return view('settings.index', compact('settings'));

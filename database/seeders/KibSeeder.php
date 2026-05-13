@@ -73,7 +73,10 @@ class KibSeeder extends Seeder
                     'aset_id' => $aset->id,
                     'luas' => rand(100, 5000),
                     'status_tanah' => 'Hak Milik',
-                    'nomor_sertifikat' => 'CERT-' . Str::random(10)
+                    'nomor_sertifikat' => 'CERT-' . Str::random(10),
+                    'tanggal_sertifikat' => now()->subDays(rand(1, 3650))->format('Y-m-d'),
+                    'penggunaan' => 'Lahan Pertanian',
+                    'keterangan' => 'Seeder data'
                 ]);
                 break;
             case 'B':
@@ -81,23 +84,39 @@ class KibSeeder extends Seeder
                     'aset_id' => $aset->id,
                     'merk' => 'Brand ' . Str::random(5),
                     'tipe' => 'Type ' . Str::random(5),
+                    'ukuran' => rand(10, 100) . ' cm',
                     'nomor_seri' => 'SN-' . Str::random(10),
+                    'nomor_rangka' => 'RNK-' . Str::random(10),
                     'nomor_polisi' => 'DT ' . rand(1000, 9999) . ' ' . strtoupper(Str::random(2)),
-                    'tahun_pembelian' => rand(2015, 2024)
+                    'nomor_bpkb' => 'BPKB-' . Str::random(10),
+                    'tahun_pembelian' => rand(2015, 2024),
+                    'asal_usul' => 'APBD',
+                    'ruang_penyimpanan' => 'Gudang Utama'
                 ]);
                 break;
             case 'C':
                 KibC::create([
                     'aset_id' => $aset->id,
                     'luas_bangunan' => rand(50, 1000),
-                    'alamat' => 'Jl. ' . Str::random(10) . ' No. ' . rand(1, 100)
+                    'bertingkat' => rand(0, 1) ? 'Ya' : 'Tidak',
+                    'tanggal_kontrak' => now()->subDays(rand(1, 1000))->format('Y-m-d'),
+                    'nomor_kontrak' => 'KONT-' . Str::random(8),
+                    'alamat' => 'Jl. ' . Str::random(10) . ' No. ' . rand(1, 100),
+                    'status_tanah' => 'Milik Sendiri',
+                    'kode_tanah' => 'KT-' . rand(100, 999),
+                    'asal_usul' => 'APBD'
                 ]);
                 break;
             case 'D':
                 KibD::create([
                     'aset_id' => $aset->id,
+                    'konstruksi' => 'Aspal',
                     'panjang' => rand(10, 1000),
-                    'kondisi_kib_d' => 'Bagus'
+                    'luas' => rand(100, 5000),
+                    'tanggal_kontrak' => now()->subDays(rand(1, 1000))->format('Y-m-d'),
+                    'nomor_kontrak' => 'KONT-D-' . Str::random(8),
+                    'status_tanah' => 'Tanah Milik Pemda',
+                    'asal_usul' => 'APBD'
                 ]);
                 break;
             case 'E':
@@ -110,9 +129,12 @@ class KibSeeder extends Seeder
             case 'F':
                 KibF::create([
                     'aset_id' => $aset->id,
-                    'progress' => rand(0, 100),
+                    'bertingkat' => rand(0, 1) ? 'Ya' : 'Tidak',
+                    'tanggal_kontrak' => now()->subDays(rand(1, 500))->format('Y-m-d'),
                     'nilai_kontrak' => $aset->nilai * 1.2,
-                    'vendor' => 'PT. ' . Str::random(8)
+                    'status_tanah' => 'Tanah Milik Negara',
+                    'asal_usul' => 'APBN',
+                    'sisa_kontrak' => $aset->nilai * 0.2
                 ]);
                 break;
         }

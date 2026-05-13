@@ -90,13 +90,17 @@
             <div class="col-lg-5">
                 <!-- Penandatangan -->
                 <div class="card shadow mb-4">
-                    <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Pejabat Penandatangan</h6>
+                    <div class="card-header py-3 bg-light">
+                        <h6 class="m-0 font-weight-bold text-primary"><i class="bi bi-person-badge me-2"></i>Kepala Instansi</h6>
                     </div>
                     <div class="card-body p-4">
                         <div class="mb-3">
                             <label class="form-label fw-bold small">Nama Kepala / Pejabat</label>
                             <input type="text" name="kepala_nama" class="form-control form-control-sm" value="{{ $settings['kepala_nama'] }}">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-bold small">Jabatan</label>
+                            <input type="text" name="kepala_jabatan" class="form-control form-control-sm" value="{{ $settings['kepala_jabatan'] }}">
                         </div>
                         <div class="mb-3">
                             <label class="form-label fw-bold small">Pangkat / Golongan</label>
@@ -105,6 +109,30 @@
                         <div class="mb-0">
                             <label class="form-label fw-bold small">NIP</label>
                             <input type="text" name="kepala_nip" class="form-control form-control-sm" value="{{ $settings['kepala_nip'] }}">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3 bg-light">
+                        <h6 class="m-0 font-weight-bold text-primary"><i class="bi bi-person-check me-2"></i>Pengurus Barang</h6>
+                    </div>
+                    <div class="card-body p-4">
+                        <div class="mb-3">
+                            <label class="form-label fw-bold small">Nama Pengurus Barang</label>
+                            <input type="text" name="pengurus_nama" class="form-control form-control-sm" value="{{ $settings['pengurus_nama'] }}">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-bold small">Jabatan</label>
+                            <input type="text" name="pengurus_jabatan" class="form-control form-control-sm" value="{{ $settings['pengurus_jabatan'] }}">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-bold small">Pangkat / Golongan</label>
+                            <input type="text" name="pengurus_pangkat" class="form-control form-control-sm" value="{{ $settings['pengurus_pangkat'] }}">
+                        </div>
+                        <div class="mb-0">
+                            <label class="form-label fw-bold small">NIP</label>
+                            <input type="text" name="pengurus_nip" class="form-control form-control-sm" value="{{ $settings['pengurus_nip'] }}">
                         </div>
                     </div>
                 </div>

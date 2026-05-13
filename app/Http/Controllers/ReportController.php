@@ -28,7 +28,17 @@ class ReportController extends Controller
         $asets = $query->latest()->get();
         $lokasis = Lokasi::all();
 
-        return view('report.index', compact('asets', 'lokasis'));
+        $totalByYear = Aset::query();
+        if ($request->filled('kib_type')) $totalByYear->where('kib_type', $request->kib_type);
+        if ($request->filled('lokasi_id')) $totalByYear->where('lokasi_id', $request->lokasi_id);
+        if ($request->filled('kondisi')) $totalByYear->where('kondisi', $request->kondisi);
+
+        $totalByYear = $totalByYear->selectRaw('tahun_perolehan, SUM(nilai) as total_nilai')
+            ->groupBy('tahun_perolehan')
+            ->orderBy('tahun_perolehan', 'desc')
+            ->get();
+
+        return view('report.index', compact('asets', 'lokasis', 'totalByYear'));
     }
 
     public function exportExcel(Request $request)
@@ -48,10 +58,20 @@ class ReportController extends Controller
         if ($request->filled('lokasi_id')) $query->where('lokasi_id', $request->lokasi_id);
         if ($request->filled('kondisi')) $query->where('kondisi', $request->kondisi);
         
-        $asets = $query->get();
+        $asets = $query->orderBy('tahun_perolehan', 'asc')->get();
         $type = $request->kib_type;
+
+        $totalByYear = Aset::query();
+        if ($request->filled('kib_type')) $totalByYear->where('kib_type', $request->kib_type);
+        if ($request->filled('lokasi_id')) $totalByYear->where('lokasi_id', $request->lokasi_id);
+        if ($request->filled('kondisi')) $totalByYear->where('kondisi', $request->kondisi);
+
+        $totalByYear = $totalByYear->selectRaw('tahun_perolehan, SUM(nilai) as total_nilai')
+            ->groupBy('tahun_perolehan')
+            ->orderBy('tahun_perolehan', 'desc')
+            ->get();
         
-        $pdf = Pdf::loadView('report.pdf', compact('asets', 'type'))->setPaper('a4', 'landscape');
+        $pdf = Pdf::loadView('report.pdf', compact('asets', 'type', 'totalByYear'))->setPaper('a4', 'landscape');
         return $pdf->download('laporan-aset-' . date('Y-m-d') . '.pdf');
     }
 }

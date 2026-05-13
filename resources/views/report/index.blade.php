@@ -51,6 +51,25 @@
         </div>
     </div>
 
+    <!-- Summary Card: Total Nilai Pertahun -->
+    <div class="card shadow mb-4 border-left-success">
+        <div class="card-header py-3 bg-light">
+            <h6 class="m-0 font-weight-bold text-success"><i class="bi bi-graph-up-arrow me-2"></i>Ringkasan Nilai Aset per Tahun</h6>
+        </div>
+        <div class="card-body py-2">
+            <div class="row row-cols-1 row-cols-md-4 g-3">
+                @foreach($totalByYear as $stat)
+                    <div class="col">
+                        <div class="p-2 border rounded bg-white shadow-sm h-100 d-flex flex-column justify-content-center">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Tahun {{ $stat->tahun_perolehan }}</div>
+                            <div class="h6 mb-0 font-weight-bold text-gray-800">Rp {{ number_format($stat->total_nilai, 0, ',', '.') }}</div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+
     <!-- Results Card -->
     <div class="card shadow mb-4">
         <div class="card-header py-3 d-flex justify-content-between align-items-center">
